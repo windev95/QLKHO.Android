@@ -11,7 +11,7 @@ namespace DataAccess
         private readonly Database data = new Database();
         public NhanVien_Object DangNhap(string taiKhoan, string matKhau)
         {
-            string sql = string.Format("Select `TenNhanVien`, `MaChucVu`, `TaiKhoan` from `NhanVien` WHERE `TaiKhoan` LIKE '{0}' AND `MatKhau` LIKE '{1}'", taiKhoan, matKhau);
+            string sql = $"Select `TenNhanVien`, `MaChucVu`, `TaiKhoan` from `NhanVien` WHERE `TaiKhoan` LIKE '{taiKhoan}' AND `MatKhau` LIKE '{matKhau}'";
             if (data.Execute(sql) == false)
             {
                 return null;
