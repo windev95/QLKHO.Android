@@ -1,32 +1,23 @@
-﻿using System.Linq;
-using DataTransferObject;
-using System.Data;
-using System.Collections.Generic;
+﻿using DataTransferObject;
 
 
 namespace DataAccess
 {
-    public class DangNhap_DAL
+    public class DangNhapDal
     {
-        private readonly Database data = new Database();
-        public NhanVien_Object DangNhap(string taiKhoan, string matKhau)
+        private readonly Database _data = new Database();
+        public NhanVienObject DangNhap(string taiKhoan, string matKhau)
         {
-            string sql = $"Select `TenNhanVien`, `MaChucVu`, `TaiKhoan` from `NhanVien` WHERE `TaiKhoan` LIKE '{taiKhoan}' AND `MatKhau` LIKE '{matKhau}'";
-            if (data.Execute(sql) == false)
+            var sql = $"Select `TenNhanVien`, `MaChucVu`, `TaiKhoan` from `NhanVien` WHERE `TaiKhoan` LIKE '{taiKhoan}' AND `MatKhau` LIKE '{matKhau}'";
+            if (_data.Execute(sql) == false) return null;
+            var dt = _data.LoadData(sql);
+            var nv = new NhanVienObject
             {
-                return null;
-            }
-            else
-            {               
-                DataTable dt = data.LoadData(sql);
-                var nv = new NhanVien_Object()
-                {                    
-                    TenNhanVien = dt.Rows[0][0].ToString(),
-                    MaPhanQuyen = int.Parse(dt.Rows[0][1].ToString()),
-                    TaiKhoan = dt.Rows[0][2].ToString()
-                };         
-                return nv;
-            }
+                TenNhanVien = dt.Rows[0][0].ToString(),
+                MaPhanQuyen = int.Parse(dt.Rows[0][1].ToString()),
+                TaiKhoan = dt.Rows[0][2].ToString()
+            };
+            return nv;
         }
     }
 }

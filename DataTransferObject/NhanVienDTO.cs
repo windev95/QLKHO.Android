@@ -1,6 +1,6 @@
 ﻿namespace DataTransferObject
 {
-    public class NhanVien_Object
+    public class NhanVienObject
     {
         public int MaNhanVien { get; set; }
         public string TenNhanVien { get; set; }

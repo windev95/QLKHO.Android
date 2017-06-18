@@ -1,11 +1,10 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using Android.Content;
 
 namespace QLKHO.Android
 {
-    [Activity(Label = "Kho Hàng")]
+    [Activity(Label = "Quản Lý Kho")]
     public class MainActivity : Activity
     {
 

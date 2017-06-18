@@ -3,25 +3,25 @@ using System.Data;
 
 namespace DataAccess
 {
-    class Database
+    public class Database
     {
-        MySqlConnection con;
-        MySqlDataAdapter da;
-        DataSet ds;
+        private readonly MySqlConnection _con;
+        private MySqlDataAdapter _da;
+        private DataSet _ds;
         public Database()
         {
-            string sql = string.Format("Server=db4free.net;Port=3307;database=qlkho;User Id=khang100;Password=123456;charset=utf8");
-            con = new MySqlConnection(sql);
+            const string sql = "Server=db4free.net;Port=3307;database=qlkho;User Id=khang100;Password=123456;charset=utf8";
+            _con = new MySqlConnection(sql);
         }
 
         public bool Execute(string sql)
         {
-            MySqlCommand cmd = new MySqlCommand(sql, con);
+            var cmd = new MySqlCommand(sql, _con);
             try
             {
-                con.Open();
+                _con.Open();
                 cmd.ExecuteNonQuery();
-                con.Close();
+                _con.Close();
                 return true;
             }
             catch
@@ -32,10 +32,10 @@ namespace DataAccess
 
         public DataTable LoadData(string sql)
         {
-            ds = new DataSet();
-            da = new MySqlDataAdapter(sql, con);
-            da.Fill(ds);
-            return ds.Tables[0];
+            _ds = new DataSet();
+            _da = new MySqlDataAdapter(sql, _con);
+            _da.Fill(_ds);
+            return _ds.Tables[0];
         }
     }
 }
