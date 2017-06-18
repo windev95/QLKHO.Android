@@ -10,7 +10,7 @@ namespace DataAccess
         DataSet ds;
         public Database()
         {
-            string sql = "Server=db4free.net;Port=3307;database=qlhd;User Id=nghiatran0595;Password=nghiatran0595;charset=utf8";
+            string sql = "Server=db4free.net;Port=3307;database=qlkho;User Id=khang100;Password=123456;charset=utf8";
             con = new MySqlConnection(sql);
         }
 
