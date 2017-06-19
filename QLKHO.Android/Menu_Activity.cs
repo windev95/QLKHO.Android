@@ -14,13 +14,11 @@ namespace QLKHO.Android
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
-            //_txt1 = FindViewById<TextView>(Resource.Id.txt1);
+            _txt1 = FindViewById<TextView>(Resource.Id.txt1);
 
-            //var it = new Intent();
-            //var bundle = it.GetBundleExtra("data");
-            //_txt1.Text = bundle.GetString("user");
-
-            // Create your application here
+            var it = Intent;
+            var bundle = it.GetBundleExtra("data");
+            _txt1.Text = bundle.GetString("TenNhanVien");
         }
     }
 }

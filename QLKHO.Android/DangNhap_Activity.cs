@@ -48,7 +48,6 @@ namespace QLKHO.Android
                 Clear();
                 _msg = "Thành Công";
             }
-
             Toast.MakeText(this, _msg, ToastLength.Long).Show();
         }
 
